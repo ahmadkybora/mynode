@@ -36,3 +36,23 @@ Product.create = (create, result) => {
         }
     });
 };
+
+Product.findById = (id, result) => {
+    dbCon.query("SELECT * FROM products WHERE id = ?", [id], (err, res) => {
+        if(err)
+        {
+            console.log("error :", err);
+            result(null, err);
+        }
+        else
+        {
+            console.log("product :", res);
+            result(null, res);
+        }
+    });
+};
+
+Product.update = (id, product, result) => {
+    dbCon.query("UPDATE FROM products SET product_name = ?, product_price = ? WHERE id = ?", [product.product_name, ])
+}
+module.exports = Product;
